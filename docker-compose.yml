@@ -1,0 +1,15 @@
+version: '3.1'
+
+services:
+  ldap:
+    image: osixia/openldap:1.2.4
+    ports:
+      - 389:389
+      - 636:636
+  phph-ldap:
+    image: osixia/phpldapadmin:0.7.2
+    ports:
+      - 8080:80
+    environment:
+      PHPLDAPADMIN_HTTPS: "false"
+      PHPLDAPADMIN_LDAP_HOSTS: ldap
